@@ -15,10 +15,16 @@ const supabase = createClient(
 );
 
 // Cấu hình CORS
+const allowedOrigins = [
+  'http://localhost:5173', // Để chạy local
+  'https://your-frontend.vercel.app' // Thay bằng URL thực tế của frontend
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: allowedOrigins,
   credentials: true
 }));
+
 
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
@@ -266,7 +272,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Lỗi server nội bộ' });
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server đang chạy trên http://localhost:${PORT}`);
 });

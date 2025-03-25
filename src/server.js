@@ -20,10 +20,8 @@ const allowedOrigins = [
   'https://your-frontend.vercel.app' // Thay bằng URL thực tế của frontend
 ];
 
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true
-}));
+app.use(cors({ origin: 'https://vercel.com/susboizs-projects/recruit-project-frontend-1' }));
+
 
 
 app.use(express.json());
